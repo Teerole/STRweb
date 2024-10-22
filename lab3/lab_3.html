@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация на спортивное мероприятие</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="dws-wrapper">
+    <div class="dws-form">
+        <form action="/submit-form" method="POST">
+
+            <fieldset class="fieldset">
+                <legend class="legend">Личные данные</legend>
+                <div class="box-input">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">ФИО</label>
+                </div>
+                <div class="box-input">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Электронная почта</label>
+                </div>
+                <div class="box-input">
+                    <input type="tel" id="phone" name="phone" required>
+                    <label for="phone">Телефон</label>
+                </div>
+                <div class="box-input">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Пароль</label>
+                </div>
+            </fieldset>
+
+
+            <fieldset class="fieldset">
+                <legend class="legend">Информация о мероприятии</legend>
+                <label>Выбор типа участия:</label>
+                <p><label for="runner">Бегун</label>
+                <input type="radio" id="runner" name="role" value="runner" checked></p>
+                <p><label for="volunteer">Волонтер</label>
+                <input type="radio" id="volunteer" name="role" value="volunteer"></p>
+                <p><label for="photo">Загрузите ваше фото:</label></p>
+                <input type="file" id="photo" name="photo">
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend class="legend">Интересы</legend>
+                <p><label for="hiking">
+                    <input type="checkbox" id="hiking" name="interest" value="hiking">
+                    Пешие походы
+                </label></p>
+                <p><label for="cycling">
+                    <input type="checkbox" id="cycling" name="interest" value="cycling">
+                    Велоспорт
+                </label></p>
+                <p><label for="swimming">
+                    <input type="checkbox" id="swimming" name="interest" value="swimming">
+                    Плавание
+                </label></p>
+            </fieldset>
+
+            <input type="submit" value="Отправить">
+            <input type="reset" value="Очистить форму">
+        </form>
+    </div>
+</div>
+</body>
+</html>

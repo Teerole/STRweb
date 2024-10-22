@@ -1,0 +1,70 @@
+body {
+    background-color:#9F88FF;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+body > * {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    color: #000;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'CustomFont1';
+    src: url('ST-Brigantina-free.ttf');
+}
+
+@font-face {
+    font-family: 'CustomFont2';
+    src: url('ForestSmooth-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'CustomFont3';
+    src: url('Nuqun-Regular.ttf');
+}
+
+
+.font1 {
+    font-family: 'CustomFont1';
+    text-align: center;
+}
+
+.font2 {
+    font-family: 'CustomFont2';
+    text-align: justify;
+}
+
+.font3 {
+    font-family: 'CustomFont3';
+    text-align: left;
+}
+
+img {
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+strong {
+    font-weight: bold;
+}
+
+b {
+    font-weight: 700;
+}

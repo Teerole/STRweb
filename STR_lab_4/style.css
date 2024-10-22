@@ -1,0 +1,153 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background: rgb(52, 206, 142);
+  height: 100px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  line-height: 100px;
+  margin: 0;
+}
+
+
+.vibrate-button {
+  margin: 50px;
+  font-size: 20px;
+  background-color: red;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  animation: vibrate 0.1s infinite;
+  transition: background-color 0.3s ease;
+}
+
+.vibrate-button:hover {
+  animation: none;
+  background-color: green;
+}
+
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+
+.animated-link {
+  display: inline-block;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  margin-left: 50px;
+  transition: color 0.3s ease;
+}
+
+.animated-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: green;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.animated-link:hover {
+  color: green;
+}
+
+.animated-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 100px;
+  animation: fall 1.5s ease-in infinite;
+  animation-iteration-count: 5;
+}
+
+
+@keyframes fall {
+  0% {
+    top: 0;
+    transform: scale(1);
+  }
+  70% {
+    top: 500px;
+    transform: scaleY(0.7);
+  }
+  85% {
+    top: 500px;
+    transform: scaleY(1.2);
+  }
+  100% {
+    top: 0;
+    transform: scale(1);
+  }
+}
+
+
+.ball {
+  animation: fall1 1.5s ease-in-out infinite;
+}
+
+@keyframes fall1 {
+  0% {
+    top: 0;
+    transform: scale(1);
+  }
+  70% {
+    top: 250px;
+    transform: scaleY(0.7);
+  }
+  85% {
+    top: 250px;
+    transform: scaleY(1.2);
+  }
+  100% {
+    top: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes fall2 {
+  0% {
+    top: 0;
+    transform: scale(1);
+  }
+  70% {
+    top: 125px;
+    transform: scaleY(0.8);
+  }
+  85% {
+    top: 125px;
+    transform: scaleY(1.15);
+  }
+  100% {
+    top: 0;
+    transform: scale(1);
+  }
+}
+
