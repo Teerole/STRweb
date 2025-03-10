@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Персональная база фильмов</title>
+</head>
+<body>
+<script>
+
+    const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?');
+
+    const personalMovieDB = {
+        count: numberOfFilms,
+        movies: {}
+    };
+
+    for (let i = 0; i < 2; i++) {
+        let movieTitle;
+        do {
+            movieTitle = prompt('Один из последних просмотренных фильмов?');
+            if (movieTitle !== null) {
+                movieTitle = movieTitle.trim();
+            }
+        } while (!movieTitle || movieTitle.length > 50)
+
+        let movieRating;
+        do {
+            movieRating = prompt('На сколько оцените его?');
+            if (movieRating !== null) {
+                movieRating = movieRating.trim();
+            }
+        } while (!movieRating)
+
+        personalMovieDB.movies[movieTitle] = movieRating;
+    }
+
+    console.log(personalMovieDB);
+
+    function renderMoviesTable() {
+        const table = document.createElement('table');
+        const headerRow = table.insertRow();
+
+        ['Фильм', 'Рейтинг'].forEach(text => {
+            const th = document.createElement('th');
+            th.textContent = text;
+            headerRow.appendChild(th);
+        });
+
+        Object.entries(personalMovieDB.movies).forEach(([title, rating]) => {
+            const row = table.insertRow();
+            const cell1 = row.insertCell();
+            const cell2 = row.insertCell();
+            cell1.textContent = title;
+            cell2.textContent = rating;
+        });
+
+        document.body.appendChild(table);
+    }
+
+    renderMoviesTable();
+
+</script>
+</body>
+</html>
