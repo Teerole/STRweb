@@ -1,33 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const shirt = JSON.parse(localStorage.getItem('selectedShirt')); // Извлекаем данные о футболке
+    const shirt = JSON.parse(localStorage.getItem('selectedShirt'));
     const detailsContainer = document.getElementById('shirt-details');
 
     if (shirt) {
-        // Извлекаем данные из объекта футболки
         const title = shirt.name || 'Unnamed Shirt';
         const description = shirt.description || 'No description available';
         const price = shirt.price || 'Price not available';
         const colors = shirt.colors || {};
 
-        // Берём изображения для первого доступного цвета
-        const firstColor = Object.keys(colors)[0] || 'default';
-        const frontImg = colors[firstColor] ? colors[firstColor].front : shirt.default.front;
-        const backImg = colors[firstColor] ? colors[firstColor].back : shirt.default.back;
+        function updateImages(color) {
+            const frontImg = colors[color] ? colors[color].front : shirt.default.front;
+            const backImg = colors[color] ? colors[color].back : shirt.default.back;
+            document.getElementById('front-img').src = frontImg;
+            document.getElementById('back-img').src = backImg;
+        }
 
-        // Генерируем цветные кнопки
         const colorButtons = Object.keys(colors).map(color => {
-            return `<button style="background-color: ${color}; width: 30px; height: 30px; border: none; margin: 5px;"></button>`;
+            return `<button class="color-btn" data-color="${color}" style="background-color: ${color}; width: 30px; height: 30px; border: none; margin: 5px;"></button>`;
         }).join('');
 
-        // Вставляем контент в контейнер
         detailsContainer.innerHTML = `
             <h2>${title}</h2>
-            <img src="${frontImg}" alt="${title} front">
-            <img src="${backImg}" alt="${title} back">
+            <img id="front-img" src="" alt="${title} front">
+            <img id="back-img" src="" alt="${title} back">
             <p>${description}</p>
             <p>Price: ${price}</p>
             <div>Colors: ${colorButtons}</div>
         `;
+
+        const firstColor = Object.keys(colors)[0] || 'default';
+        updateImages(firstColor);
+
+        document.querySelectorAll('.color-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                updateImages(color);
+            });
+        });
     } else {
         detailsContainer.innerHTML = '<p>No shirt selected.</p>';
     }
