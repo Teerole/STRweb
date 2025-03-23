@@ -1,18 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const targets = document.querySelectorAll('.target');
     let lastTouchTime = 0;
-    const doubleTapDelay = 300; // Задержка для двойного касания (мс)
+    const doubleTapDelay = 300;
 
     targets.forEach(target => {
-        target.style.position = 'absolute'; // Убедимся, что элементы позиционируются абсолютно
+        target.style.position = 'absolute';
 
-        // Флаги для разделения обработки мыши и касаний
         let isMouseDown = false;
         let isTouching = false;
 
-        // --- События мыши ---
+        // События мыши
         target.addEventListener('mousedown', (e) => {
-            if (isTouching) return; // Игнорируем, если уже есть касание
+            if (isTouching) return;
             isMouseDown = true;
             e.preventDefault();
             target.isDragging = true;
@@ -75,16 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
             target.stickyMouseDown = onMouseDown;
         });
 
-        // --- События касаний ---
+        //  События касаний
         target.addEventListener('touchstart', (e) => {
-            if (isMouseDown) return; // Игнорируем, если уже есть мышь
+            if (isMouseDown) return;
             isTouching = true;
 
             if (e.touches.length === 1) {
                 const currentTime = new Date().getTime();
                 const tapLength = currentTime - lastTouchTime;
 
-                // Двойное касание
                 if (tapLength < doubleTapDelay && tapLength > 0) {
                     e.preventDefault();
                     target.isSticky = true;
